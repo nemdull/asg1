@@ -1,23 +1,21 @@
 # 9章演習 — HTML/CSS による3ステップ UI デモ
 
-簡潔な3ステップの UI デモを通じて、シンプルな静的ページでも読みやすい構成・拡張性を意識した実装を紹介します。
-
 ## プロジェクト概要
-- HTML と CSS の静的ページで、3つの「step-box」ブロックを横並びに表示するデモ。将来的にはデータDriven な構成へ拡張可能な設計を採用しています。
+HTML と CSS の静的ページで、3つの「step-box」ブロックを横並びに表示するデモ。将来的にはデータ駆動型へ拡張可能な設計を採用しています。
 
 ## 技術スタック
 - HTML5
 - CSS3
 - 画像資産（img/flow01.png, img/flow02.png, img/flow03.png）を背景的に使用する UI 要素
-- 特記: JavaScript はこのデモには含まれていません（静的コンテンツのみ）
+- JavaScript はこのデモには含まれていません（静的コンテンツのみ）
 
-## 実装した主な機能一覧
+## 主な機能一覧
 - 3つのステップを表現する共通構造のステップボックス（step-box）
   - 各ステップは step-imgX（背景イメージのプレースホルダ）、step-num、タイトル、テキストを含む
 - レスポンシブ対応を想定したシンプルなレイアウト設計
 - セマンティックな HTML 構造とクラス名での再利用性を意識
 
-## 設計・実装で工夫した点
+## 設計・実装の工夫
 - 再利用性の意識
   - 3つのステップ全てを同一の markup（step-box）で表現することで将来的なデータ駆動化を想定
 - 視覚設計の分離
@@ -25,20 +23,38 @@
 - アクセシビリティと読みやすさ
   - テキストは適切な段落要素で構造化、読み手が短時間で要点を把握できるよう配置
 
-## セットアップ方法・動作確認方法
+## セットアップ & 動作確認
 - ローカルでの確認
   - index.html を直接ブラウザで開く
 - ローカルサーバーでの実行例
   - Python3 がある場合
-    - cd /Users/takahashidaisuke/Desktop/nemdull_repos/asg1
-    - python3 -m http.server 8000
-    - ブラウザで http://localhost:8000/index.html を開く
+    ```
+    cd /Users/takahashidaisuke/Desktop/nemdull_repos/asg1
+    python3 -m http.server 8000
+    ```
+    ブラウザで http://localhost:8000/index.html を開く
   - Node.js の http-server を使う場合
-    - cd /Users/takahashidake/Desktop/nemdull_repos/asg1
-    - npm install -g http-server
-    - http-server -p 8000
-    - http://localhost:8000/index.html を開く
+    ```
+    cd /Users/takahashidaisuke/Desktop/nemdull_repos/asg1
+    npm install -g http-server
+    http-server -p 8000
+    ```
+    ブラウザで http://localhost:8000/index.html を開く
 - Docker での実行はこのリポジトリには含まれていません。必要であれば Dockerfile の追加方法を提案します。
+
+## Docker/Compose手順（ある場合）
+- 現状 Docker は含まれていません。必要に応じて、静的サイト向けの軽量な Nginx あるいは httpd コンテナを用いたデプロイ手順を追記します。
+
+## サンプルコマンド
+- ローカルサーバー起動の確認
+  - Python3: 上記のコマンドを実行
+  - http-server: 上記のコマンドを実行
+- コンテンツ取得の例
+  ```
+  curl http://localhost:8000/index.html
+  ```
+- ブラウザでの動作確認
+  - macOS などの環境で http://localhost:8000/index.html を開く
 
 ## 今後の改善ポイント / TODO
 - レスポンシブ対応の強化（画面サイズに応じたステップの並びとサイズ調整）
@@ -47,7 +63,7 @@
 - テストの追加（簡易なビジュアル回帰テスト、レンダリング確認）
 - テキストの外部化・国際化対応（i18n）
 
-## アピールポイント
+## アピールポイント（採用向け）
 このリポジトリは、静的UIの設計・実装における「技術力」「設計力」「改善意識」を端的に示すサンプルです。
 - 技術力: HTML5/CSS3 の適切な使い方、セマンティックマークアップ、クラス設計の一貫性
 - 設計力: 3つのステップを共通構造で表現する再利用性を重視したアーキテクチャ
@@ -63,3 +79,6 @@
 </div>
 ```
 （本リポジトリの index.html に3つの同様のブロックが用意されています）
+
+## 備考
+本 README は、リポジトリの現状構成に基づき、3ステップ UI の静的デモを前提に作成しています。将来的なデータ駆動化やテストの追加に備え、拡張ポイントを明示しています。
